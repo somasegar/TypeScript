@@ -5216,6 +5216,13 @@ module ts {
             }
         }
 
+        function getSourceFile2(fileName: string) {
+            synchronizeHostData();
+            
+            fileName = TypeScript.switchToForwardSlashes(fileName);
+            return getSourceFile(fileName);
+        }
+
         return {
             dispose: dispose,
             cleanupSemanticCache: cleanupSemanticCache,
@@ -5247,7 +5254,7 @@ module ts {
             getFormattingEditsAfterKeystroke: getFormattingEditsAfterKeystroke,
             getEmitOutput: getEmitOutput,
             getSignatureAtPosition: getSignatureAtPosition,
-            getSourceFile: getSourceFile
+            getSourceFile: getSourceFile2
         };
     }
 
